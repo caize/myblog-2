@@ -18,7 +18,12 @@ var expressWinston = require('express-winston');
 var fs = require('fs');
 var http = require('http');
 var https = require('https');
+var productionConf = require('./config/production');
 
+//在云主机上的时候。通过pm2启动的时候。config是nil。所以需要手动指定
+if (!config) {
+    config = productionConf;
+}
 
 var app = express();
 

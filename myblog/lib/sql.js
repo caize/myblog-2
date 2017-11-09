@@ -1,5 +1,10 @@
 let mysql = require('mysql');
 let config = require('config-lite');
+
+let productionConf = require('../config/production');
+if (!config) {
+    config = productionConf;
+}
 let connection = mysql.createConnection(config.dbConfig);
 connection.connect(function(err) {
     if (err) {
